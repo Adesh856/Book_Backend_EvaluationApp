@@ -28,7 +28,7 @@ BooksRouter.get("/",async(req,res)=>{
 BooksRouter.delete("/delete/:_id",async(req,res)=>{
     const _id = req.params._id
     try {
-        const DeletedUser=await BooksModel.findIdByAndDelete(_id)
+        const DeletedUser=await BooksModel.findByIdAndDelete(_id)
         console.log(DeletedUser)
      res.status(200).send({"msg":`Book has been deleted`})
         
@@ -40,8 +40,8 @@ BooksRouter.delete("/delete/:_id",async(req,res)=>{
 
 ///filterRoute
 
-BooksRouter.get("/filter",async(req,res)=>{
-    const {Genre} = req.query
+BooksRouter.get("/:genre",async(req,res)=>{
+    const {genre} = req.params
     try {
         const FilteredBYGenre = await BooksModel.find({Genre})
      res.status(200).send({FilteredBYGenre})
@@ -51,8 +51,8 @@ BooksRouter.get("/filter",async(req,res)=>{
     }
 })
 ///Sort
-BooksRouter.get("/sort",async(req,res)=>{
-    const {sort} = req.query
+BooksRouter.get("/:sort",async(req,res)=>{
+    const {sort} = req.params
     
     try {
         let n ;
