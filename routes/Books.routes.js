@@ -43,7 +43,7 @@ BooksRouter.delete("/delete/:_id",async(req,res)=>{
 BooksRouter.get("/:genre",async(req,res)=>{
     const {genre} = req.params
     try {
-        const FilteredBYGenre = await BooksModel.find({Genre})
+        const FilteredBYGenre = await BooksModel.find({Genre:genre})
      res.status(200).send({FilteredBYGenre})
     } catch (error) {
     res.status(401).send({"msg":error.message})
