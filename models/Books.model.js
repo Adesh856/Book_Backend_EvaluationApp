@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
 const BookSchema = mongoose.Schema({
-    Title:String,
-    Author:String,
-    Description:String,
-Genre:String,
- Price:Number
+     Title:{type:String,unique:true},
+     Author:{type:String,required:true},
+     Description:{type:String,required:true},
+     Genre:{type:String,required:true},
+     Price:{type:Number,required:true},
 
 })
 
